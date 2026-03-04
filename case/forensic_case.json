@@ -1,0 +1,69 @@
+{
+  "clusters": [],
+  "description": "# Example\r\n\r\nThis is an example forensic case",
+  "notes": null,
+  "tags": [
+    "tlp:amber",
+    "enisa:nefarious-activity-abuse=\"installation-of-sophisticated-and-targeted-malware\""
+  ],
+  "tasks_template": [
+    {
+      "clusters": [],
+      "description": "Only one machine",
+      "notes": [],
+      "subtasks": [],
+      "tags": [
+        "PAP:GREEN"
+      ],
+      "time_required": "4h",
+      "title": "Extract disk",
+      "urls_tools": [],
+      "uuid": "1a68105b-a365-45d6-8b7c-1266b70ca89e",
+      "version": 2
+    },
+    {
+      "clusters": [],
+      "description": "The time is your ally",
+      "notes": [],
+      "subtasks": [],
+      "tags": [
+        "PAP:GREEN"
+      ],
+      "time_required": null,
+      "title": "Create a timeline",
+      "urls_tools": [],
+      "uuid": "b8f410e2-746b-4753-946a-e73e40b4d921",
+      "version": 1
+    },
+    {
+      "clusters": [],
+      "description": "Lost in the wild Windows",
+      "notes": [],
+      "subtasks": [],
+      "tags": [
+        "PAP:GREEN"
+      ],
+      "time_required": null,
+      "title": "Extract and analyze evtx",
+      "urls_tools": [],
+      "uuid": "c69dc04a-0038-4ab0-be3b-7bcf40412824",
+      "version": 1
+    },
+    {
+      "clusters": [],
+      "description": "Boring part but do it",
+      "notes": [],
+      "subtasks": [],
+      "tags": [],
+      "time_required": null,
+      "title": "Write report",
+      "urls_tools": [],
+      "uuid": "b3a2e406-badc-4314-bf2f-27e451fcce5d",
+      "version": 1
+    }
+  ],
+  "time_required": "5d",
+  "title": "Forensic case",
+  "uuid": "9fe52f91-1f34-4e49-985c-be3839a53319",
+  "version": 2
+}
