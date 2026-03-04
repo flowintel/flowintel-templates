@@ -1,0 +1,204 @@
+{
+  "clusters": [],
+  "description": "## Compromised workstation \u2013 malware activity\r\n\r\nInvestigation on a compromised workstation found at institution ABC.",
+  "notes": null,
+  "tags": [
+    "tlp:amber",
+    "europol-incident:malware=\"infection\"",
+    "csirt_case_classification:incident-category=\"malware\""
+  ],
+  "tasks_template": [
+    {
+      "clusters": [],
+      "description": "- Isolate the affected workstation and prevent further spread.\r\n- Disconnect the host from the network (EDR network isolation, switch port shutdown, VPN disconnect).\r\n- Instruct the user to stop using the device.\r\n- Record who reported the incident and when.",
+      "notes": [],
+      "subtasks": [
+        {
+          "description": "Isolate the workstation from the network."
+        },
+        {
+          "description": "Contact the user and instruct them to stop using the device."
+        }
+      ],
+      "tags": [
+        "workflow:todo=\"preserve-evidence\""
+      ],
+      "time_required": null,
+      "title": "Immediate containment",
+      "urls_tools": [
+        {
+          "name": "EDR console"
+        },
+        {
+          "name": "Asset management system"
+        }
+      ],
+      "uuid": "47eb3e97-03e3-48c9-a55b-03d1201521b8",
+      "version": 1
+    },
+    {
+      "clusters": [],
+      "description": "Collect volatile and non-volatile evidence from the compromised workstation.\r\n- Capture relevant logs (system, security, EDR, proxy if available).\r\n- Preserve suspicious files and artefacts for analysis.\r\n- Avoid unnecessary reboots until evidence collection is complete.\r\n\r\n",
+      "notes": [],
+      "subtasks": [
+        {
+          "description": "Export EDR and system logs for the affected endpoint."
+        },
+        {
+          "description": "Collect suspicious binaries, scripts and documents."
+        }
+      ],
+      "tags": [
+        "workflow:todo=\"preserve-evidence\"",
+        "course-of-action:passive=\"discover\""
+      ],
+      "time_required": null,
+      "title": "Evidence collection",
+      "urls_tools": [
+        {
+          "name": "Log collection / SIEM"
+        },
+        {
+          "name": "Forensic toolkit"
+        }
+      ],
+      "uuid": "4e9158e0-4eeb-49ad-8fb6-8c59763cb380",
+      "version": 1
+    },
+    {
+      "clusters": [],
+      "description": "Identify the malware family and capabilities.\r\n- Perform static and dynamic analysis in a controlled environment.\r\n- Extract indicators (hashes, domains, IPs, mutexes, registry keys).\r\n- Document persistence mechanisms and command and control behaviour.\r\n\r\n",
+      "notes": [],
+      "subtasks": [
+        {
+          "description": "Analyse samples in a sandbox."
+        },
+        {
+          "description": "Document indicators of compromise and behaviours."
+        }
+      ],
+      "tags": [
+        "workflow:todo=\"expansion\""
+      ],
+      "time_required": null,
+      "title": "Malware analysis",
+      "urls_tools": [
+        {
+          "name": "Sandbox platform"
+        },
+        {
+          "name": "Malware analysis VM"
+        }
+      ],
+      "uuid": "231aa704-0e7b-4bd9-9aac-3fad0787ea4d",
+      "version": 1
+    },
+    {
+      "clusters": [],
+      "description": "Assess whether the compromise extends beyond the initial workstation.\r\n- Review authentication logs, EDR alerts and network telemetry for lateral movement.\r\n- Identify any additional systems or accounts that may be affected.\r\n- Evaluate the likelihood of data exfiltration.\r\n\r\n",
+      "notes": [],
+      "subtasks": [
+        {
+          "description": "Hunt for related activity on other endpoints and servers."
+        },
+        {
+          "description": "Check for suspicious use of privileged accounts."
+        }
+      ],
+      "tags": [
+        "PAP:GREEN",
+        "course-of-action:passive=\"discover\""
+      ],
+      "time_required": null,
+      "title": "Scope and impact assessment",
+      "urls_tools": [
+        {
+          "name": "SIEM / log search"
+        },
+        {
+          "name": "Network monitoring"
+        }
+      ],
+      "uuid": "ee0cca24-0994-45be-826f-2bd6c39dda89",
+      "version": 1
+    },
+    {
+      "clusters": [],
+      "description": "Remove the malware and restore the workstation safely.\r\n- Remove malicious files and persistence artefacts or reimage the system according to policy.\r\n- Apply missing security updates and hardening measures.\r\n- Validate that the system is clean before returning it to production.\r\n\r\n",
+      "notes": [],
+      "subtasks": [
+        {
+          "description": "Execute eradication procedure or perform full reimage."
+        },
+        {
+          "description": "Verify that malware activity no longer occurs."
+        }
+      ],
+      "tags": [],
+      "time_required": null,
+      "title": "Eradication and recovery",
+      "urls_tools": [
+        {
+          "name": "Endpoint management / reimaging tool"
+        }
+      ],
+      "uuid": "5dd98e1e-22e2-4118-b658-f678774d68af",
+      "version": 1
+    },
+    {
+      "clusters": [],
+      "description": "Share indicators and context with MISP or an internal threat repository.\r\n- Create or update a MISP event with indicators from the case.\r\n- Apply appropriate TLP and distribution settings.\r\n- Link the Flowintel case ID in the MISP event for traceability.\r\n\r\n",
+      "notes": [],
+      "subtasks": [
+        {
+          "description": "Publish indicators of compromise to MISP."
+        },
+        {
+          "description": "Map indicators to relevant malware or intrusion-set galaxies."
+        }
+      ],
+      "tags": [
+        "workflow:todo=\"review-before-publication\"",
+        "workflow:todo=\"review-for-privacy\""
+      ],
+      "time_required": null,
+      "title": "Update MISP / threat repository",
+      "urls_tools": [
+        {
+          "name": "MISP instance"
+        }
+      ],
+      "uuid": "747d49f3-315b-4711-9653-4e30c729a037",
+      "version": 1
+    },
+    {
+      "clusters": [],
+      "description": "Capture lessons learned and close the case.\r\n- Summarise root cause, detection quality and response timeline.\r\n- Propose improvements (rules, hardening, awareness, processes).\r\n- Attach the final report and update case status.\r\n",
+      "notes": [],
+      "subtasks": [
+        {
+          "description": "Draft and attach the final incident report."
+        },
+        {
+          "description": "Log agreed follow-up actions for tracking in separate tasks or cases."
+        }
+      ],
+      "tags": [
+        "workflow:todo=\"release-requested\""
+      ],
+      "time_required": null,
+      "title": "Post-incident review",
+      "urls_tools": [
+        {
+          "name": "Reporting template"
+        }
+      ],
+      "uuid": "de21b0a2-c010-4c36-ad0f-e52f6d25ba18",
+      "version": 1
+    }
+  ],
+  "time_required": null,
+  "title": "Compromised workstation",
+  "uuid": "bb3f1da5-e897-48ad-b76f-f9221bca4e9a",
+  "version": 1
+}
